@@ -1,0 +1,41 @@
+solution:
+
+A,B=len(board), len(board[0])
+tmp=[[0 for i in range(B)] for j in range(A)]
+
+#print(t)
+print(tmp)
+def yamraj(i,j):
+    
+    p=[(0,1),(0,-1),(1,0),(-1,0),(1,1),(1,-1),(-1,1),(-1,-1)]
+	
+    #print(p)
+    cn=0
+    for x,y in p:
+        #print(i+y, j+x, game[x][y])
+        if 0<=i+y<A and 0<=j+x<B and game[i+y][j+x]==1:
+            cn+=1
+            #print(cn)
+    if game[i][j]==1:
+        if cn <2:
+            return 0
+        elif 2<=cn<=3:
+            return 1
+        else:
+            return 0
+    else:
+        if cn==3:
+            return 1
+        else:
+            return 0
+for i in range(A):
+    for j in range(B):
+        tmp[i][j]=yamraj(i,j)
+    
+
+for i in range(A):
+    for j in range(B):
+        game[i][j]=tmp[i][j]
+        
+        
+                    
